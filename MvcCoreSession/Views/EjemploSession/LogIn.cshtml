@@ -1,0 +1,20 @@
+﻿<h1>Log In Usuario</h1>
+
+<form method="post">
+    <label>User Name: </label>
+    <input type="text" name="username" class="form-control" required />
+    <button class="btn btn-dark">
+        Log In
+    </button>
+</form>
+
+<h1 style="color:blue">
+    @ViewData["MENSAJE"]
+</h1>
+
+@if (Context.Session.GetString("USERNAME") != null)
+{
+    <h1 style="color:red">
+        Bienvenido a mi App, @Context.Session.GetString("USERNAME")
+    </h1>
+}

@@ -1,0 +1,47 @@
+﻿@using MvcCoreSession.Helpers;
+
+@{
+    List<Persona> personas = Context.Session.GetObject<List<Persona>>("LISTAPERSONAS");
+}
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    @if (Context.Session.GetString("USERNAME") != null)
+    {
+        <h1 style="color:red">
+            Bienvenido a mi App, @Context.Session.GetString("USERNAME")
+        </h1>
+    }
+
+    @if (personas != null)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Edad</th>
+                </tr>
+            </thead>
+            @foreach(Persona p in personas)
+            {
+                <tr>
+                    <td>@p.Nombre</td>
+                    <td>@p.Email</td>
+                    <td>@p.Edad</td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <h1 style="color:red">
+            No hay personas en Session
+        </h1>
+    }
+</div>

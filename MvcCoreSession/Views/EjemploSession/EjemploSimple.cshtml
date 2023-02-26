@@ -1,0 +1,33 @@
+﻿
+<h1>Ejemplo simple</h1>
+
+<h3>@ViewData["MENSAJE"]</h3>
+
+@if (Context.Session.GetString("USERNAME") != null)
+{
+    <h1 style="color:red">
+        Bienvenido a mi App, @Context.Session.GetString("USERNAME")
+    </h1>
+}
+
+<form method="post">
+    <label>Nombre Usuario:</label>
+    <input type="text" name="usuario" class="form-control"/>
+    <button class="btn btn-info" name="accion" value="almacenar">
+        Guardar datos Session
+    </button>
+    <button class="btn btn-dark" name="accion" value="mostrar">
+        Mostrar datos Session
+    </button>
+</form>
+
+
+<h2 style="color:blue">
+    Numero actual: @ViewData["NUMERO"]
+</h2>
+<h2 style="color:red">
+    Usuario actual: @ViewData["USUARIO"]
+</h2>
+<h2 style="color:fuchsia">
+    Hora Session: @ViewData["HORA"]
+</h2>

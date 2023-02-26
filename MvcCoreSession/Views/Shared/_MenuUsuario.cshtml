@@ -1,0 +1,31 @@
+﻿@using MvcCoreSession.Helpers
+@{
+    List<Persona> personas =
+            Context.Session.GetObject<List<Persona>>("LISTAPERSONAS");
+    int numeropersonas = 0;
+    if (personas != null)
+    {
+        numeropersonas = personas.Count;
+    }
+}
+
+@if (Context.Session.GetString("USERNAME") == null)
+{
+        <a asp-controller="EjemploSession"
+        asp-action="LogIn"
+        class="nav-link text-info">
+            Log In
+        </a>
+}
+else
+{
+        <p style="color:blue">
+            Bienvenido, @Context.Session.GetString("USERNAME")
+            , Número de personas en carrito: @numeropersonas
+        </p>
+        <a asp-controller="EjemploSession"
+        asp-action="CerrarSesion"
+        class="nav-link text-danger">
+            Cerrar sesión
+        </a>
+}
